@@ -1,0 +1,36 @@
+html {
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  height: 95%;
+  background-color: blueviolet;
+}
+
+.videoObj {
+  width: 20rem;
+  margin: 10px;
+}
+
+.chat-left {
+  font-size: x-large;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chat-right {
+  font-size: x-large;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chat-user {
+  font-size: medium;
+  font-weight: 400;
+}

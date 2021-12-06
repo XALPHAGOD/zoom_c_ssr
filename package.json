@@ -1,0 +1,18 @@
+{
+  "name": "zoom_c_ssr",
+  "version": "1.0.0",
+  "description": "Zoom Clone SSR",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "XALPHAGOD",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0",
+    "uuid": "^8.3.2"
+  }
+}

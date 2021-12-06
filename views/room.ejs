@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoom_C</title>
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+    <link rel="stylesheet" href="../custom.css" />
+    <script src="../bootstrap.bundle.min.js"></script>
+    <script src="../script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const roomId = "<%= roomId %>";
+      const user = "<%= user %>";
+    </script>
+  </head>
+  <body>
+    <div class="text-white m-2 mb-0">
+      Room: <span id="room-id"><%= roomId %></span>
+    </div>
+    <div class="h-100 d-flex">
+      <div class="w-75">
+        <div
+          id="videos-container"
+          class="
+            w-100
+            d-flex
+            justify-content-evenly
+            align-items-center
+            flex-wrap
+          "
+        ></div>
+      </div>
+      <div class="w-25">
+        <div id="chat-box" class="bg-light p-2" style="height: 90%"></div>
+        <div
+          class="w-100 d-flex justify-content-center align-items-center py-2"
+        >
+          <form id="chat-form" class="d-flex" style="width: 100%">
+            <input
+              type="text"
+              name="chat"
+              id="chat"
+              autocomplete="off"
+              class="form-control"
+            />
+            <button class="btn btn-primary mx-2" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
