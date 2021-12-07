@@ -4,10 +4,15 @@ const path = require("path");
 const { Server } = require("socket.io");
 const { createServer } = require("http");
 const { v4: uuidv4 } = require("uuid");
+const { ExpressPeerServer } = require("peer");
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+const peerServer = ExpressPeerServer(server, {
+  debug: true,
+});
+app.use("/peerjs", peerServer);
 
 // app.use(cookieParser());
 app.set("view engine", "ejs");
@@ -31,9 +36,14 @@ app.get("/room/:roomID/:user", (req, res) =>
 );
 
 io.on("connection", (socket) => {
-  socket.on("join-a-room", (roomId) => {
+  socket.on("join-a-room", ({ roomId, user, peerId }) => {
     socket.join(roomId);
-    socket.to(roomId).emit("new-user", socket.id);
+    socket
+      .to(roomId)
+      .emit("new-user", { newUser: user, newUserPeerId: peerId });
+    socket.on("disconnect", () => {
+      socket.to(roomId).emit("disconnected", { user, peerId });
+    });
   });
   socket.on("chat", (data) => {
     socket.to(data.roomId).emit("chat", data);
